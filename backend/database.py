@@ -21,7 +21,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-
+# calling the db
 def get_db():
     """FastAPI dependency that yields a database session and ensures it is closed."""
     db = SessionLocal()
