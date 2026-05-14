@@ -1,0 +1,6 @@
+# Top-level convenience pointer.
+# Backend dependencies are pinned in backend/requirements.txt.
+# Install with:
+#   pip install -r backend/requirements.txt
+
+-r backend/requirements.txt
