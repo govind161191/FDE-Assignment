@@ -8,6 +8,7 @@ import {
   updateBook,
   deleteBook,
 } from "../services/bookService";
+import { getApiError } from "../utils/apiError";
 
 export default function BooksPage() {
   const [books, setBooks] = useState([]);
@@ -19,7 +20,7 @@ export default function BooksPage() {
     setLoading(true);
     getBooks()
       .then(setBooks)
-      .catch((e) => setToast({ message: e?.message || "Failed to load books", type: "error" }))
+      .catch((e) => setToast({ message: getApiError(e, "Failed to load books"), type: "error" }))
       .finally(() => setLoading(false));
   };
 
@@ -37,7 +38,7 @@ export default function BooksPage() {
       setEditing(null);
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Operation failed", type: "error" });
+      setToast({ message: getApiError(e, "Operation failed"), type: "error" });
     }
   };
 
@@ -48,7 +49,7 @@ export default function BooksPage() {
       setToast({ message: "Book deleted", type: "success" });
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Delete failed", type: "error" });
+      setToast({ message: getApiError(e, "Delete failed"), type: "error" });
     }
   };
 

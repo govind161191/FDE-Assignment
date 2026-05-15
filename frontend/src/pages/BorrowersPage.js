@@ -8,6 +8,7 @@ import {
   updateBorrower,
   deleteBorrower,
 } from "../services/borrowerService";
+import { getApiError } from "../utils/apiError";
 
 export default function BorrowersPage() {
   const [borrowers, setBorrowers] = useState([]);
@@ -19,7 +20,7 @@ export default function BorrowersPage() {
     setLoading(true);
     getBorrowers()
       .then(setBorrowers)
-      .catch((e) => setToast({ message: e?.message || "Failed to load", type: "error" }))
+      .catch((e) => setToast({ message: getApiError(e, "Failed to load"), type: "error" }))
       .finally(() => setLoading(false));
   };
 
@@ -37,7 +38,7 @@ export default function BorrowersPage() {
       setEditing(null);
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Operation failed", type: "error" });
+      setToast({ message: getApiError(e, "Operation failed"), type: "error" });
     }
   };
 
@@ -48,7 +49,7 @@ export default function BorrowersPage() {
       setToast({ message: "Borrower deleted", type: "success" });
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Delete failed", type: "error" });
+      setToast({ message: getApiError(e, "Delete failed"), type: "error" });
     }
   };
 

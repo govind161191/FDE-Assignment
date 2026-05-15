@@ -7,6 +7,7 @@ import {
   returnBook,
   getTransactions,
 } from "../services/transactionService";
+import { getApiError } from "../utils/apiError";
 
 export default function TransactionsPage() {
   const [books, setBooks] = useState([]);
@@ -23,7 +24,7 @@ export default function TransactionsPage() {
       setBorrowers(br);
       setTransactions(t);
     } catch (e) {
-      setToast({ message: e?.message || "Failed to refresh", type: "error" });
+      setToast({ message: getApiError(e, "Failed to refresh"), type: "error" });
     }
   };
 
@@ -44,7 +45,7 @@ export default function TransactionsPage() {
       setBorrowerId("");
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Borrow failed", type: "error" });
+      setToast({ message: getApiError(e, "Borrow failed"), type: "error" });
     }
   };
 
@@ -54,7 +55,7 @@ export default function TransactionsPage() {
       setToast({ message: "Book returned", type: "success" });
       refresh();
     } catch (e) {
-      setToast({ message: e?.response?.data?.detail || "Return failed", type: "error" });
+      setToast({ message: getApiError(e, "Return failed"), type: "error" });
     }
   };
 
