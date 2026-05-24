@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from database import engine, Base
 import models  # noqa: F401  -- ensure models are registered with Base
-from routers import books, borrowers, transactions, search, dashboard
+from routers import books, borrowers, transactions, search, dashboard, etl
 
 
 # Create database tables on startup (Phase 1: simple, no migrations)
@@ -49,6 +49,7 @@ app.include_router(borrowers.router)
 app.include_router(transactions.router)
 app.include_router(search.router)
 app.include_router(dashboard.router)
+app.include_router(etl.router)
 
 
 @app.get("/", tags=["Health"])

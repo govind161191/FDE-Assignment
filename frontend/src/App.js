@@ -6,6 +6,7 @@ import BooksPage from "./pages/BooksPage";
 import BorrowersPage from "./pages/BorrowersPage";
 import TransactionsPage from "./pages/TransactionsPage";
 import SearchPage from "./pages/SearchPage";
+import ETLPage from "./pages/ETLPage";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/borrowers" element={<BorrowersPage />} />
           <Route path="/transactions" element={<TransactionsPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/etl" element={<ETLPage />} />
           <Route path="*" element={<div className="page"><h1>404 – Page not found</h1></div>} />
         </Routes>
       </main>

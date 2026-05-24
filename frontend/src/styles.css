@@ -311,6 +311,64 @@ html, body, #root {
 .toast-info    { background: var(--prodapt-dark); }
 @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
 
+/* -------------------- ETL Pipeline -------------------- */
+.etl-stages {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.etl-stage-card {
+  flex: 1 1 180px;
+  background: var(--prodapt-white);
+  border: 2px solid var(--prodapt-border);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.2s;
+}
+.etl-stage-done {
+  border-color: var(--prodapt-red);
+  background: #FFF8F8;
+}
+.etl-stage-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+.etl-stage-label { font-weight: 700; color: var(--prodapt-dark); margin-bottom: 0.3rem; }
+.etl-stage-desc { font-size: 0.82rem; color: var(--prodapt-muted); }
+.etl-arrow {
+  font-size: 1.5rem;
+  color: var(--prodapt-red);
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+.etl-sub {
+  font-size: 0.78rem;
+  color: var(--prodapt-muted);
+  margin-top: 0.3rem;
+}
+.etl-transform-card { padding: 0; overflow: hidden; }
+.etl-export-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.etl-export-card {
+  background: var(--prodapt-white);
+  border-radius: 10px;
+  padding: 1.4rem 1.2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-top: 4px solid var(--prodapt-red);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.etl-export-icon { font-size: 1.8rem; }
+.etl-export-label { font-weight: 700; color: var(--prodapt-dark); }
+.etl-export-desc { font-size: 0.83rem; color: var(--prodapt-muted); margin-bottom: 0.5rem; }
+
 /* -------------------- Responsive -------------------- */
 @media (max-width: 700px) {
   .navbar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
